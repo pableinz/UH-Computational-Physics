@@ -15,7 +15,7 @@ set(f,'Visible','on');
 %the chart will pop up if 'on' is selected.  You can use 'off' as well
 
 
-plot(data(:,1),data(:,2),'*','MarkerSize',1,'color','blue')
+plot(data(:,1),data(:,2:end),'.','MarkerSize',1,'color','blue')
 % This is the actual plot.  Only the first two aruments are required, the others optional.
 % '.' refers to the plot markers being points.  You can use '+', for example.
 % 'MarkerSize',1 choses the size of the plot markers

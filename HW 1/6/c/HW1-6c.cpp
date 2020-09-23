@@ -10,9 +10,9 @@ int main(){
 	
 	//	DEFINE PARAMETERS FOR THE CALCULATION
 	
-	int max_iteration=30000;  //number of iterations for values of x
+	int max_iteration=50000;  //number of iterations for values of x
 	
-	int max_period=512; 	//how many values we'll print....			 of what????
+	int max_period=1024; 	//how many values we'll print....			 of what????
 	int start_testing=max_iteration-max_period; //the iteration where it is time to start printing.
 	int numdiv=10000;  //the number of values of r we will print.
 	double tolerance=1e-8;  // this is what we mean by a "small" difference. Measures the difference between values of x corresponding to two iterations
@@ -30,8 +30,8 @@ int main(){
 		
 		//now that we have the parameters all chosen (the only parameter was r), we have to initalize our data.
 		
-		double x=0.001;  //initial value of x
-		double xobs=0; //this is the stored value of x to see if there is a repeat.
+		double x=0.01;  //initial value of x
+		double xobs=0.; //this is the stored value of x to see if there is a repeat.
 		int period=max_period;  //this is the actual period for this system.		?????
 		
 		// iterate to find the evolution of x, there are max_iteration steps (e.g. 10000)

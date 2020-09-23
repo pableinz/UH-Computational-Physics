@@ -13,11 +13,12 @@ def GSO(a,b):
        print("c= "+str(c)+"\n")
        print("v1= "+str(v1)+" , "+"v2= "+str(v2)+"\n")
        print("mod v2= "+str(np.sqrt(np.dot(v2,v2)))+"\n")
+       print("v1.v2= "+str(np.dot(v1,v2))+"\n")
     
 
 
-a=np.array([1,2,3])
-b=np.array([0,2,4])
+a=np.array([1000,1,1])
+b=np.array([1,2,3])
 
 
 print("a= "+str(a)+" , "+"b= "+str(b)+"\n")

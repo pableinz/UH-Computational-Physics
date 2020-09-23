@@ -30,7 +30,7 @@ int main(){
 		
 		//now that we have the parameters all chosen (the only parameter was r), we have to initalize our data.
 		
-		double x=0.001;  //initial value of x
+		double x=0.01;  //initial value of x
 		double xobs=0; //this is the stored value of x to see if there is a repeat.
 		int period=max_period;  //this is the actual period for this system.		?????
 		
