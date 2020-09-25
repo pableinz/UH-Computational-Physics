@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib as mp
 import matplotlib.pyplot as plt
-import pylab as pl
+
 
 import sys
 sys.path.append('./NM4P/Python/nm4p/')  #this is required to import a module from outside of the current directory.
@@ -16,11 +16,11 @@ from rk4 import rk4						#this imports rk4 from Garcia's github.  Note the file 
 def deriv(X,z,param):
 	return np.array([X[1],X[2],(1-6*X[0])*X[1]])  # this is dX/dt = deriv(X,t)
 
-											#note that this funny form is chosen to match Garcia's rk4 function
-pl.draw()  
+fig = plt.figure()
+a1 = fig.add_subplot(1, 1, 1)										#note that this funny form is chosen to match Garcia's rk4 function
 c=['r','g','b']
 for dziter in range(3):
-    dz=0.001*10**dziter
+    dz=0.001*10**0
 
                             
     alfa=0.5
@@ -55,12 +55,15 @@ for dziter in range(3):
 
 
     
-    pl.plot(sampleZ,rk4Result,color=c[dziter],label='rk4 dz='+str(dz))
-    pl.legend(loc='upper right')
-   
-pl.plot(sampleZ,1/(2*np.cosh(sampleZ/2)**2),color='k',label="Exact") 
- 
+a1.plot(sampleZ,rk4Result,color=c[dziter],label='rk4 dz='+str(dz))
+a1.plot(sampleZ,1/(2*np.cosh(sampleZ/2)**2),color='k',label='Exact')
+a1.plot(sampleZ,np.true_divide(rk4Result-1/(2*np.cosh(sampleZ/2)**2),rk4Result),color='g',label='percent error')
+#a1.plot(sampleZ,rk4Result-1/(2*np.cosh(sampleZ/2)**2),'.y',label='rk4-analytic')
 
-
-pl.show()	
-pl.savefig('HW3_3b.png')
+a1.legend(loc='upper right')
+a1.set_xlabel('z')
+a1.set_ylabel('w')
+plt.title('Dz='+str(dz))
+plt.tight_layout()
+plt.savefig('HW3-3bdiff3.eps')
+plt.show()	

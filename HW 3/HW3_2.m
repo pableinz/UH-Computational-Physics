@@ -3,18 +3,18 @@ addpath("NM4P/Matlab");
 dt=[0.5 0.1 0.05 0.01 0.005 0.001];
 x=0.0;
 v=1.0;
-
 T=5.0;
+
 rk4Results=[x];
 verletResults=[x];
 g1=[];
 g2=[];
+
 for jiter=1:length(dt)
    
     nstep=T/dt(jiter);
     params=[];
     X=[0,0];
-    
     sampleTimes=(((1:(nstep+1))-1)*dt(jiter))';
     
 %rk4 integrator
@@ -50,7 +50,8 @@ for jiter=1:length(dt)
     end
     g1(jiter)=abs(1.0*sin(T)-verletResults(length(sampleTimes),size(verletResults,2)))
     
-    if jiter==0
+    if jiter==0 %set to 0 to skip plotting function and approximations. 
+                %Set it to the specific Delta t that you wish to plot for
         figure 
         hold on
 
@@ -61,11 +62,8 @@ for jiter=1:length(dt)
         xlabel('t');
         ylabel('x');    
         axis([0 5. -1.1 1.1])
-        legend({'rk4','A\times sin(T)','verlet'});
-        
-            title('\Delta t=0.5');
-        
-        
+        legend({'rk4','A\times sin(T)','verlet'}); 
+        title('\Delta t=0.5');
         
         hold off
     end
