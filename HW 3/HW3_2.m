@@ -22,7 +22,7 @@ for jiter=1:length(dt)
     X(2)=v;
     t=0.0;
     for iter=1:nstep
-        X=rk4(X,t,dt(jiter),'deriv',params);
+        X=rk4(X,t,dt(jiter),'deriv3_2',params);
         rk4Results(iter+1,jiter)= X(1);
         t=t+dt(jiter);
     end
@@ -42,7 +42,7 @@ for jiter=1:length(dt)
     t=0;
     for iter=1:nstep-1
         xCurrent=X(1);
-        xNew=2*X(1)-X(2)+dt(jiter)*dt(jiter)*(-sin(xCurrent));
+        xNew=2*X(1)-X(2)+dt(jiter)*dt(jiter)*(-(xCurrent));
         X(1)=xNew;
         X(2)=xCurrent;
         verletResults(iter+2,jiter)= xNew;
@@ -50,25 +50,33 @@ for jiter=1:length(dt)
     end
     g1(jiter)=abs(1.0*sin(T)-verletResults(length(sampleTimes),size(verletResults,2)))
     
-    figure 
-    hold on
-     
-    plot(sampleTimes,rk4Results(:,jiter),'k');
-    plot(sampleTimes,1.0*sin(sampleTimes),'g'); 
-    plot(sampleTimes,verletResults(:,jiter)+.01,'r'); 
-    
-    xlabel('t');
-    ylabel('x');
-    legend({'rk4','A\times sin(T)','verlet'});
-   
-    hold off
-    
+    if jiter==0
+        figure 
+        hold on
+
+        plot(sampleTimes,rk4Results(:,jiter),'k');
+        plot(sampleTimes,1.0*sin(sampleTimes),'g'); 
+        plot(sampleTimes,verletResults(:,jiter)+.01,'r'); 
+        box on;
+        xlabel('t');
+        ylabel('x');    
+        axis([0 5. -1.1 1.1])
+        legend({'rk4','A\times sin(T)','verlet'});
+        
+            title('\Delta t=0.5');
+        
+        
+        
+        hold off
+    end
 end
 
 figure
 hold on
-plot(dt,g2,'k'); 
-plot(dt,g1,'r'); 
+ 
+plot(dt,g1,'*-r'); 
+plot(dt,g2,'o-k');
+plot(dt,g1/g2,'s-b');
 ax=gca;
 box on;
 set(ax,'Xscale','log');
@@ -76,5 +84,5 @@ set(ax,'Yscale','log');
 ax.FontSize=12;
 xlabel('\Delta t');
 ylabel('g_m=|sin(T)-x^{method}(T)|');
-legend({'g_1 verlet','g_2 rk4'},'Location','Northwest');
+legend({'g_1 verlet','g_2 rk4','g1/g2'},'Location','Southeast');
 saveas(gcf,'HW3-2','epsc');
