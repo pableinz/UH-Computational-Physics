@@ -36,7 +36,7 @@ for jiter=1:length(dt)
     %Verlet integrator
     X(2)=x;
     verletResults(1,jiter)= x;
-    xNew=x+dt(jiter)*v+dt(jiter)*dt(jiter)*(-sin(x))/2;
+    xNew=x+dt(jiter)*v+dt(jiter)*dt(jiter)*(-(x))/2;
     X(1)=xNew;
     verletResults(2,jiter)= xNew;
     t=0;

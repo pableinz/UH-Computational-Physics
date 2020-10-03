@@ -50,7 +50,7 @@ for ziter in range(int(niter)):
 
 fig = plt.figure()
 a1 = fig.add_subplot(1, 1, 1)
-a1.plot(sampleZ,rk4Result,'ok',markersize=4,markerfacecolor='white',markevery=4,label='rk4')
+a1.plot(sampleZ,rk4Result,'ok',markersize=4,markerfacecolor='white',markevery=4 ,label='rk4')
 a1.plot(sampleZ,1/(2*np.cosh(sampleZ/2)**2),color='r',label='Exact')
 #a1.plot(sampleZ,(rk4Result-1/(2*np.cosh(sampleZ/2)**2))/(1/(2*np.cosh(sampleZ/2)**2)),color='g',label='rk4-analytic')
 
