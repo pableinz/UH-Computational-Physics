@@ -1,6 +1,6 @@
-A = 4;
+A = 0.5;
 ms=4;
-tspan = [0 3.5];
+tspan = [0 20];
 f1=figure;
 f2=figure;
 yinit=[0.0001,1.5*pi;0.1,1.5*pi;0.5,1.5*pi;1.5,1.5*pi;4.0,1.5*pi];
@@ -29,7 +29,7 @@ for ii=1:5
 end
 figure(f1);
 hold all;
-title('Hopf model for a=4');
+title('Hopf model for a=0.5');
 
 legend('r0=0.0001','r0=0.1','r0=0.5','r0=1.5','r0=4','Location','NorthEast');
 box on
@@ -40,6 +40,6 @@ ax.FontSize=12;
 xlabel('t');
 ylabel('r(t)');
 
-saveas(gcf,'HW4_1b_loop_a4','epsc');
+saveas(gcf,'HW4_1b_loop_a05','epsc');
 
 hold off
