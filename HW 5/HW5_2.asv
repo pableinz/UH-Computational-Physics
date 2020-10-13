@@ -21,7 +21,7 @@ toc
 
 %using fsolve
 tic
-problem.options = optimoptions('fsolve','Algorithm','trust-region');
+problem.options = optimoptions('''Algorithm','trust-region');
 problem.objective=@intersec;
 problem.x0=[1 1];
 problem.solver='fsolve';

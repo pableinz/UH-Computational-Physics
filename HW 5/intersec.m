@@ -1,6 +1,4 @@
-function myfun=intersec(X)
-
-
-myfun(1)= X(1)^2*exp(-X(1)^2)+X(2)-1;
-myfun(2)= X(1)^4/(1+X(1)^2*X(2)^2)-1;
+function F=intersec(x)
+F(1) = x(1)^4/(1+x(1)^2*x(2)^2)-1;
+F(2) = x(1)^2*exp(-x(1)^2)+x(2)^2-1;
 
