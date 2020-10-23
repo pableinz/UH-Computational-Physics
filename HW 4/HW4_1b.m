@@ -7,7 +7,7 @@ hold all
 
 y0 = [4 10];
 [t,y] = ode45(@(t,y) odefcn(t,y,A), tspan, y0);
-plot(t,y(:,1),'x','MarkerSize',ms)
+%plot(t,y(:,1),'x','MarkerSize',ms)
 z=sqrt(A./(1+((A-y0(1)^2)./y0(1)^2)*exp(-2*A*t)));
 
 plot(z.*cos(t),z.*sin(t),'.','MarkerSize',ms)

@@ -15,7 +15,7 @@ rnew=[0;0];
 iter=1;
 sx=[];%for storing and analyzing convergence
 sy=[];
-tol=1e-6;
+tol=1e-12;
 while(1)
     rnew=rold-vpa(subs(Jinv([x;y]),{x,y},{rold(1),rold(2)}))*vpa(subs(h([x;y]),{x,y},{rold(1),rold(2)}));
     sx(iter)=(rnew(1))
@@ -28,6 +28,7 @@ while(1)
     end
 end
 root=vpa(rnew)
+rnew
 toc
 %1.1739777098108600266775112342048
 %0.80786881713905550481258636604307
