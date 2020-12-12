@@ -1,6 +1,6 @@
 %  Program to solve the neutron diffusion equation using a parameter C that
 %  accounts for chain reactions.
-clear all;  help schro;   % Clear memory and print header
+clear all;     % Clear memory and print header
 
 %% * Initialize parameters (grid spacing, time step, etc.)
 N = 100;%input('Enter number of grid points: ');

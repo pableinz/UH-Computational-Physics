@@ -5,7 +5,7 @@ clear;
 %% * Initialize parameters (grid spacing, time step, etc.)
 Nprime = 100;   %input('Enter number of grid points: ');
 N=Nprime+2;     %adding the ghost cells to apply Neummann BCs.
-L = 1;        % System extends from -L/2 to L/2
+L = 100;        % System extends from -L/2 to L/2
 delx = L/(N-1-2); % Grid cell size
 x = delx*(0:N-1) - delx*(N-1)/2;  % Coordinates  of grid points
 D = input('Enter D: ');  % diffusion coefficient. Larger means faster diffusion

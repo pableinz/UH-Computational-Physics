@@ -21,7 +21,14 @@ end
 %% * Set initial and boundary conditions.
 nn = zeros(N,1);        % Initialize density to zero at all points
 nn_new = zeros(N,1);    % Initialize temporary array used by FTCS
-nn(round(N/2)) = 1/h;   % Initial cond. is delta function in center
+x0 = 0;                  % Location of the center of the wavepacket
+sigma0 = L/20;           % Standard deviation of the wavefunction
+
+Norm_rho = 1/(sqrt(sigma0*sqrt(pi)));  % Normalization
+delx = L/(N-1-2)
+x = delx*(0:N-1) - delx*(N-1)/2;
+nn = Norm_rho * exp(-(x'-x0).^2/(2*sigma0^2));
+%nn(round(N/2)) = 1/h;   % Initial cond. is delta function in center
 %% The boundary conditions are nn(1) = nn(N) = 0
 
 %% * Set up loop and plot variables.
